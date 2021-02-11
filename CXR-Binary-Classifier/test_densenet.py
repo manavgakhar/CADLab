@@ -73,7 +73,7 @@ def run_test():
 	numClass = 1
 
 	# image folder location
-	img_dir = './images-nih'
+	img_dir = r"../../../input/my-nih-data/NIH_data/NIH_images"
 
 	# dataset split files
 	split_file_dir = './dataset_split'
