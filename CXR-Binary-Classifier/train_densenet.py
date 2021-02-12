@@ -61,7 +61,7 @@ def main():
 	numClass = 1 # 1 for binary classification
 
 	# image folder location
-	img_dir = r"../../../input/my-nih-data/NIH_data/NIH_images"
+	img_dir = r"../../../../../input/my-nih-data/NIH_data/NIH_images"
 
 	# dataset split files
 	split_file_dir = './dataset_split'
