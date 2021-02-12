@@ -74,7 +74,7 @@ def main():
 		split_files[split] = os.path.join(split_file_dir, 
 			split+split_file_suffix)
 
-	model =EfficientNet.from_pretrained('efficientnet-b1', num_classes=1)
+	model =EfficientNet.from_pretrained('efficientnet-b7', num_classes=1)
 	# modify the last FC layer to number of classes
 	
 	
