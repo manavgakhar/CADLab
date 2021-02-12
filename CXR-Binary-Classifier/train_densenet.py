@@ -50,7 +50,7 @@ def main():
 
 	if args.pretrained:
 		print("=> using pre-trained model '{}'".format(args.arch))
-		model = models.__dict__['wide_resnet101_2'](pretrained=True)
+		model = models.__dict__['resnext101_32x8d'](pretrained=True)
 	else:
 		print("=> creating model '{}'".format(args.arch))
 		model = models.__dict__[args.arch](pretrained=False)
