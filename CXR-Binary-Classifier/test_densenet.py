@@ -96,7 +96,7 @@ def run_test():
 
 	model = model.cuda()
 
-	model_path = './trained_models_nih/'+args.arch+'_'+str(args.img_size)+\
+	model_path = 'trained_models_nih/'+args.arch+'_'+str(args.img_size)+\
 	'_'+str(args.batch_size)+'_'+str(args.learning_rate)
 
 	model.load_state_dict(torch.load(model_path)['state_dict'])
