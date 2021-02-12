@@ -76,8 +76,9 @@ def main():
 	print(model)
 
 	# modify the last FC layer to number of classes
-	num_ftrs = model.classifier.in_features
-	model.classifier = nn.Linear(num_ftrs, numClass)
+	num_ftrs = model.fc.in_features
+	model.fc = nn.Linear(num_ftrs, numClass)
+	
 	# model = nn.DataParallel(model).cuda()
 	model = model.cuda()
 
