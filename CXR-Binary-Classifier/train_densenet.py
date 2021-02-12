@@ -26,6 +26,7 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 import copy
+from efficientnet_pytorch import EfficientNet
 
 from CXR_Trainer_bin import Trainer
 
@@ -73,19 +74,17 @@ def main():
 		split_files[split] = os.path.join(split_file_dir, 
 			split+split_file_suffix)
 
-	print(model)
-
+	model = EfficientNet.from_pretrained('efficientnet-b0')
 	# modify the last FC layer to number of classes
-	num_ftrs = model.fc.in_features
-	model.fc = nn.Linear(num_ftrs, numClass)
+	print(model)
 	
 	# model = nn.DataParallel(model).cuda()
-	model = model.cuda()
+# 	model = model.cuda()
 
-	trainer_cxr = Trainer()
-	trainer_cxr.train(img_dir, split_files['train'], split_files['val'], 
-		model, args.batch_size, args.epoch, args.img_size, args.crop_size,
-		args.learning_rate, args.arch, args.gpu_id)
+# 	trainer_cxr = Trainer()
+# 	trainer_cxr.train(img_dir, split_files['train'], split_files['val'], 
+# 		model, args.batch_size, args.epoch, args.img_size, args.crop_size,
+# 		args.learning_rate, args.arch, args.gpu_id)
 
 
 if __name__ == '__main__':
