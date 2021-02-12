@@ -38,7 +38,7 @@ parser.add_argument('--pretrained', '-p', type=distutils.util.strtobool,
 	default='True')
 parser.add_argument('--img_size', '-sz', default=256, type=int)
 parser.add_argument('--crop_size', '-cs', default=224, type=int)
-parser.add_argument('--epoch', '-ep', default=50, type=int)
+parser.add_argument('--epoch', '-ep', default=25, type=int)
 parser.add_argument('--batch_size', '-bs', default=64, type=int)
 parser.add_argument('--learning_rate', '-lr', default=0.001, type=float)
 parser.add_argument('--gpu_id', '-gpu', default=0, type=int)
@@ -50,7 +50,7 @@ def main():
 
 	if args.pretrained:
 		print("=> using pre-trained model '{}'".format(args.arch))
-		model = models.__dict__[args.arch](pretrained=True)
+		model = models.__dict__['wide_resnet101_2'](pretrained=True)
 	else:
 		print("=> creating model '{}'".format(args.arch))
 		model = models.__dict__[args.arch](pretrained=False)
