@@ -47,7 +47,7 @@ class DataGenerator(Dataset):
 		self.img_name_list = []
 		self.img_label_list = []
 		self.transform = transform
-		# self.img_directory = img_dir
+		self.img_directory = img_dir
 
 		with open(split_file, 'r') as split_name:
 			img_and_label_list = split_name.readlines()
