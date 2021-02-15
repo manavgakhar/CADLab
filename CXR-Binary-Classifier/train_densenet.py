@@ -26,7 +26,7 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 import copy
-from efficientnet_pytorch import EfficientNet
+
 
 from CXR_Trainer_bin import Trainer
 
@@ -74,7 +74,9 @@ def main():
 		split_files[split] = os.path.join(split_file_dir, 
 			split+split_file_suffix)
 
-	model =EfficientNet.from_pretrained('efficientnet-b7', num_classes=1)
+	mnum_ftrs = model.fc.in_features
+	num_ftrs = model.classifier.in_features
+	model.fc = nn.Linear(num_ftrs, numClass)
 	# modify the last FC layer to number of classes
 	
 	
