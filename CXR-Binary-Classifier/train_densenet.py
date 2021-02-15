@@ -75,7 +75,6 @@ def main():
 			split+split_file_suffix)
 
 	mnum_ftrs = model.fc.in_features
-	num_ftrs = model.classifier.in_features
 	model.fc = nn.Linear(num_ftrs, numClass)
 	# modify the last FC layer to number of classes
 	
