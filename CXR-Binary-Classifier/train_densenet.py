@@ -74,7 +74,7 @@ def main():
 		split_files[split] = os.path.join(split_file_dir, 
 			split+split_file_suffix)
 
-	mnum_ftrs = model.fc.in_features
+	num_ftrs = model.fc.in_features
 	model.fc = nn.Linear(num_ftrs, numClass)
 	# modify the last FC layer to number of classes
 	
