@@ -21,6 +21,24 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 from PIL import Image
+import cv2
+
+def clahe_cv2(image_path):
+    bgr = cv2.imread(image_path)
+
+    lab = cv2.cvtColor(bgr, cv2.COLOR_BGR2LAB)
+
+    lab_planes = cv2.split(lab)
+
+    clahe = cv2.createCLAHE(clipLimit=0.2,tileGridSize=(4,4))
+
+    lab_planes[0] = clahe.apply(lab_planes[0])
+
+    lab = cv2.merge(lab_planes)
+
+    rgb = cv2.cvtColor(lab, cv2.COLOR_LAB2RGB)
+    
+    return rgb
 
 class DataGenerator(Dataset):
 
@@ -45,7 +63,7 @@ class DataGenerator(Dataset):
 
 		img_name = self.img_name_list[index]
 		# img_path = os.path.join(img_dir, img_name)
-		image_data = Image.open(img_name).convert('RGB')
+		image_data = clahe_cv2(img_name)
 		image_data = self.transform(image_data)
 		# image_label= torch.FloatTensor(self.img_label_list[index])
 		image_label= self.img_label_list[index]
