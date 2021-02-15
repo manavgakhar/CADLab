@@ -62,8 +62,8 @@ class DataGenerator(Dataset):
 	def __getitem__(self, index):
 
 		img_name = self.img_name_list[index]
-		# img_path = os.path.join(img_dir, img_name)
-		image_data = clahe_cv2(img_name)
+		img_path = os.path.join(img_dir, img_name)
+		image_data = clahe_cv2(img_path)
 		image_data = self.transform(image_data)
 		# image_label= torch.FloatTensor(self.img_label_list[index])
 		image_label= self.img_label_list[index]
